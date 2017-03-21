@@ -168,6 +168,11 @@ This script defines the:
 
 These parameters are then passed to the simulation function *CellComp4Layer_Ve_f_Plane* which performs the specified simulations (type "help CellComp4Layer_Ve_f_Plane" for more inforation). This script can also be used to call the 3-layer version, *CellComp3Layer_Ve_f_Plane*. *CellComp4Layer_Ve_f_Plane* and *CellComp3Layer_Ve_f_Plane* return the extracellular potential in the specified plane in the Fourier domain. In order to calculate the longitudinal and transverse components of the membrane potential, this script applies the supplied neurite equation (neur_eq) before calculating the inverse Fourier transform.
 
+### SimulationParameters.m
+
+*SimulationParameters* defines the simulation geometry and parameters for a
+number of different simulations, and is called by *AnyElecConfig_RotatedNeurite*.
+
 ## Utilities
 
 ### NTESparams.m
