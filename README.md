@@ -1,5 +1,5 @@
 # FourLayerRetinalModel-Esler2017
-Code to simulate epiretinal stimulation of the retina using a four-layer model
+Code to simulate epiretinal stimulation of the retina using a four-layer model.
 
 ## CellComp4Layer_Ve_f_Plane.m
 
