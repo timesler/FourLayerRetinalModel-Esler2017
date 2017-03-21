@@ -72,7 +72,7 @@ This script was used to conduct the analysis presented in:
         x_max, z_max, t_max, d_x, d_z, d_t, ...  % Spatial sampling
         h_F, Ya, rot, Ri);                       % Simulation geometry
 
-A further example can be found in AnyElecConfig_RotatedNeurite_4L.m
+A further example can be found in *AnyElecConfig_RotatedNeurite_4L*.
 
 ## CellComp3Layer_Ve_f_Plane.m
 
@@ -154,4 +154,4 @@ This script defines the:
   * Location and orientation of the simulated axons
   * Stimulation waveform (i.e. amplitude and phase duration for a biphasic pulse)
 
-These parameters are then passed to the simulation function CellComp4Layer_Ve_f_Plane which performs the specified simulations (type "help CellComp4Layer_Ve_f_Plane" for more inforation). This script can also be used to call the 3-layer version, CellComp3Layer_Ve_f_Plane. CellComp4Layer_Ve_f_Plane and CellComp3Layer_Ve_f_Plane return the extracellular potential in the specified plane in the Fourier domain. In order to calculate the longitudinal and transverse components of the membrane potential, this script applies the supplied neurite equation (neur_eq) before calculating the inverse Fourier transform.
+These parameters are then passed to the simulation function *CellComp4Layer_Ve_f_Plane* which performs the specified simulations (type "help CellComp4Layer_Ve_f_Plane" for more inforation). This script can also be used to call the 3-layer version, *CellComp3Layer_Ve_f_Plane*. *CellComp4Layer_Ve_f_Plane* and *CellComp3Layer_Ve_f_Plane* return the extracellular potential in the specified plane in the Fourier domain. In order to calculate the longitudinal and transverse components of the membrane potential, this script applies the supplied neurite equation (neur_eq) before calculating the inverse Fourier transform.
