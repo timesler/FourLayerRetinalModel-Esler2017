@@ -21,14 +21,16 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%% Created by: Tim Esler, 2017 %%%%%%%%%%%%%%%%%%%%%%%%%
 
+addpath('Utilities')
+
 %% Parameters
 
 % Define simulation size and step sizes
 x_max = 2000e-6;
 z_max = 2000e-6;
 t_max = 600e-6;
-d_x = 10e-6;
-d_z = 10e-6;
+d_x = 20e-6;
+d_z = 20e-6;
 d_t = 4e-6;
 
 Z = -z_max:d_z:z_max;
@@ -98,12 +100,21 @@ Ya = Ya(2:end);
 %% Plot geometry of stimulation
 
 ColorSet = varycolor(length(rot)+1);
-ColorSet = [ColorSet; [1 .5 0]];
+ColorSet = [[1 .5 0]; ColorSet];
 
-P4 = figure;
+figSize = [5 2 8 6]*3;
+fontSize = 6*3;
+
+fig1 = figure('Units','centimeters','Position',figSize);
+set(fig1, 'PaperPosition',figSize)
+
 ax = axes;
 set(ax, 'ColorOrder', ColorSet);
 hold on
+h1 = plot3((-z_max:d_z:z_max)*1e6.*cos(rot_AOP), ...
+    (-z_max:d_z:z_max)*1e6.*sin(rot_AOP), ...
+    ones(size(-z_max:d_z:z_max))*Ya_AOP*1e6, ...
+    '-d','LineWidth',2,'MarkerSize',1);
 for i = 1:length(rot)
     h1 = plot3((-z_max:d_z:z_max)*1e6.*cos(rot(i)), ...
         (-z_max:d_z:z_max)*1e6.*sin(rot(i)), ...
@@ -112,10 +123,6 @@ for i = 1:length(rot)
 end
 grid
 h2 = plot3(Zi*1e6,Xi*1e6,Yi*1e6,'o','MarkerFaceColor','k','MarkerSize',5);
-h1 = plot3((-z_max:d_z:z_max)*1e6.*cos(rot_AOP), ...
-    (-z_max:d_z:z_max)*1e6.*sin(rot_AOP), ...
-    ones(size(-z_max:d_z:z_max))*Ya_AOP*1e6, ...
-    '-d','LineWidth',2,'MarkerSize',1);
 title('Geometry of simulations')
 xlabel('Z (\mum)')
 ylabel('X (\mum)')
@@ -128,21 +135,21 @@ view(-45,12)
 grid minor
 hold off
 
-annotation(P4,'textbox',[0 0 1 0.05],'String',...
-    sprintf('t_{max} = %s, d_t = %s, d_x = %s, d_z = %s, Xi = %s, Yi = %s, Zi = %s, I_M = %s, I_D = %s, Ya = %s, h_F = %s',...
-    mat2str(t_max),mat2str(d_t),mat2str(d_x),mat2str(d_z),mat2str(Xi),mat2str(Yi),mat2str(Zi),mat2str(I_M),mat2str(I_D),mat2str(Ya),mat2str(h_F)),...
-    'LineStyle','none')
-
-set(P4, 'Colormap', ColorSet);
+set(fig1, 'Colormap', ColorSet);
 cb = colorbar('SouthOutside');
 caxis([0 120])
-set(cb,'Ticks',([rot rot(end)+d_rot rot(end)+2*d_rot]+d_rot/2)*180/pi,'TickLabels',[num2cell(rot*180/pi) 'Electrode' 'AOP'])
+set(cb,'Ticks',([rot rot(end)+d_rot rot(end)+2*d_rot]+d_rot/2)*180/pi,'TickLabels',['AOP' num2cell(rot*180/pi) 'Electrode'])
 ylabel(cb,'Neurite rotation')
 
 %% Plots of membrane potential over time at neurite centre
 
+figSize = [5 2 8 6]*3;
+fontSize = 6*3;
+
+fig2 = figure('Units','centimeters','Position',figSize);
+set(fig2, 'PaperPosition',figSize)
+
 % Longitudinal
-P2 = figure;
 ax = subplot(3,1,1);
 hold on
 set(ax, 'ColorOrder', ColorSet);
@@ -186,8 +193,10 @@ xlim([0 T(end)*1e6]);
 hold off
 box off
 
-set(P2, 'Colormap', ColorSet(1:end-1,:));
-cb = colorbar('East');
+set(fig2, 'Colormap', ColorSet(1:end-1,:));
+axPos = ax.Position;
+cb = colorbar('EastOutside');
+ax.Position = axPos;
 caxis([0 110])
 set(cb,'Ticks',([rot rot(end)+d_rot]+d_rot/2)*180/pi,'TickLabels',['AOP' num2cell(rot*180/pi)],'YAxisLocation','right')
 ylabel(cb,'Neurite rotation')
@@ -204,7 +213,6 @@ if scaleOut
     scale = Th(1)/max(Vm_rot_AOP(:));
     Vm_rot_AOP = Vm_rot_AOP*scale;
     Vm_rot = Vm_rot*scale;
-    disp(['Total stimulus current: ' num2str(sum(I_M)*scale*1e6) 'uA'])
 end
 
 ax = subplot(1,1,1);
