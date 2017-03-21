@@ -1,7 +1,19 @@
 # FourLayerRetinalModel-Esler2017
 Code to simulate epiretinal stimulation of the retina using a four-layer model.
 
-## CellComp4Layer_Ve_f_Plane.m
+The code in this repository was used to conduct the analysis presented in:
+
+* \<Enter correct reference here\>
+
+## Quick Start
+
+1. Download repository to a machine with MATLAB installed.
+2. Navigate to folder containing repository, and open Code folder.
+3. Type AnyElecConfig_RotatedNeurite to run a simulation using 4 electrodes which displays the induced membrane potential for neurites are various locations and with various orientations.
+
+## Code files
+
+### CellComp4Layer_Ve_f_Plane.m
 
 *CellComp4Layer_Ve_f_Plane* returns the electric field in the Fourier domain due to epiretinal stimulation with point or disk electrodes in a plane in the x-z dimensions (where y is in the direction normal to the surface of the retina, toward the electrode). The retina is modelled using a 4-layer description, including Insulator, Vitreous, Nerve Fibre Layer, and the Ganglion Cell Layer (+ others). The insulator layer is modelled using a no-current boundary condition within the vitreous (see diagram below for geometry).
  
@@ -27,9 +39,9 @@ The extracellular potential for the NFL is calculated using a modified version o
 
 This script was used to conduct the analysis presented in:
 
-\<Enter correct reference here\>
+* \<Enter correct reference here\>
 
-### Inputs
+#### Inputs
 
 | Input | Description |
 |---|---|
@@ -42,7 +54,7 @@ This script was used to conduct the analysis presented in:
 | rot | Coordinate rotation for a fibre which is rotated w.r.t. the fibre bindle (only set to a nonzero value if the output will be used to calculate the membrane potential of a rotated fiber). (rad) |
 | Ri | Radius of disk for each electrode (set to 0 for point source). (m) |
 
-### Outputs
+#### Outputs
 
 | Output | Description |
 | --- | ---|
@@ -50,7 +62,7 @@ This script was used to conduct the analysis presented in:
 | Ve_T_#_f | The calculated transverse extracellular potential in the #-direction for a full plane in the Fourier domain. (V) |
 | neur_eq | The transformation matrix for converting the longitudinal extracellular potential into longitudinal membrane potential. Multiplying Ve_L_f by this pointwise will give the membrane potential in the x, z, and t Fourier domain. |
 
-### Example usage
+#### Example usage
 
     Xi = 0e-6;
     Yi = 200e-6;
@@ -74,7 +86,7 @@ This script was used to conduct the analysis presented in:
 
 A further example can be found in *AnyElecConfig_RotatedNeurite_4L*.
 
-## CellComp3Layer_Ve_f_Plane.m
+### CellComp3Layer_Ve_f_Plane.m
 
 NOTE: Identical in implementation to CellComp3Layer_Ve_f_Plane but with a 3-layer model instead of 4, to simulate stimulation where no insulator is used.
 
@@ -99,9 +111,9 @@ The extracellular potential for the NFL is calculated using a modified version o
 
 This script was used to conduct the analysis presented in:
 
-\<Enter correct reference here\>
+* \<Enter correct reference here\>
 
-### Inputs
+#### Inputs
 
 | Input | Description |
 |---|---|
@@ -114,7 +126,7 @@ This script was used to conduct the analysis presented in:
 | rot | Coordinate rotation for a fibre which is rotated w.r.t. the fibre bindle (only set to a nonzero value if the output will be used to calculate the membrane potential of a rotated fiber). (rad) |
 | Ri | Radius of disk for each electrode (set to 0 for point source). (m) |
 
-### Outputs
+#### Outputs
 
 | Output | Description |
 | --- | ---|
@@ -122,7 +134,7 @@ This script was used to conduct the analysis presented in:
 | Ve_T_#_f | The calculated transverse extracellular potential in the #-direction for a full plane in the Fourier domain. (V) |
 | neur_eq | The transformation matrix for converting the longitudinal extracellular potential into longitudinal membrane potential. Multiplying Ve_L_f by this pointwise will give the membrane potential in the x, z, and t Fourier domain. |
 
-### Example usage
+#### Example usage
 
     Xi = 0e-6;
     Yi = 200e-6;
@@ -144,7 +156,7 @@ This script was used to conduct the analysis presented in:
         x_max, z_max, t_max, d_x, d_z, d_t, ...  % Spatial sampling
         h_F, Ya, rot, Ri);                       % Simulation geometry
 
-## AnyElecConfig_RotatedNeurite.m
+### AnyElecConfig_RotatedNeurite.m
 
 *AnyElecConfig_RotatedNeurite* simulates the epiretinal stimulation of retinal ganglion cell axons in the NFL (axons of passage) and in the ganglion cell layer (axon initial segments).
 
@@ -155,3 +167,17 @@ This script defines the:
   * Stimulation waveform (i.e. amplitude and phase duration for a biphasic pulse)
 
 These parameters are then passed to the simulation function *CellComp4Layer_Ve_f_Plane* which performs the specified simulations (type "help CellComp4Layer_Ve_f_Plane" for more inforation). This script can also be used to call the 3-layer version, *CellComp3Layer_Ve_f_Plane*. *CellComp4Layer_Ve_f_Plane* and *CellComp3Layer_Ve_f_Plane* return the extracellular potential in the specified plane in the Fourier domain. In order to calculate the longitudinal and transverse components of the membrane potential, this script applies the supplied neurite equation (neur_eq) before calculating the inverse Fourier transform.
+
+## Utilities
+
+### NTESparams.m
+
+*NTESPARAMS* returns the neurite dimensions and physiological parameters defined below. This function is called by the simulation scripts described above. Parameters can either be returned as double or single precision floats, using mode = 'double' and mode = 'single', respectively.
+
+### Solve3LayerModelwInsulator.m
+
+*Solve3LayerModelwInsulator* use MATLAB's symbolic mathematics toolbox to derive expressions for the integration coefficients used to solve the system of partial differential equations which define extracellular potential in the four layer model of the retina. See *CellComp4Layer_Ve_f_Plane* for an implementation of these coefficients.
+
+This script was used to conduct the analysis presented in:
+
+* \<Enter correct reference here\>
