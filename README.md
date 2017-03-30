@@ -9,7 +9,7 @@ The code in this repository was used to conduct the analysis presented in:
 
 1. Download repository to a machine with MATLAB installed.
 2. Navigate to folder containing repository, and open Code folder.
-3. Type AnyElecConfig_RotatedNeurite to run a simulation using 4 electrodes which displays the induced membrane potential for neurites are various locations and with various orientations.
+3. Type AnyElecConfig_RotatedNeurite to run a simulation using 4 electrodes which displays the induced membrane potential for neurites are various locations and with various orientations (this generates a similar figure to Fig. 6 in the above paper).
 
 ## Code files
 
