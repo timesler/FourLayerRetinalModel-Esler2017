@@ -3,13 +3,14 @@ Code to simulate epiretinal stimulation of the retina using a four-layer model.
 
 The code in this repository was used to conduct the analysis presented in:
 
-* \<Enter correct reference here\>
+*  Minimizing activation of overlying axons with epiretinal stimulation: The role of fiber orientation and electrode configuration 
+Esler TB, Kerr RR, Tahayori B, Grayden DB, Meffin H, et al. (2018) Minimizing activation of overlying axons with epiretinal stimulation: The role of fiber orientation and electrode configuration. PLOS ONE 13(3): e0193598. https://doi.org/10.1371/journal.pone.0193598
 
 ## Quick Start
 
 1. Download repository to a machine with MATLAB installed.
-2. Navigate to folder containing repository, and open Code folder.
-3. Type AnyElecConfig_RotatedNeurite to run a simulation using 4 electrodes which displays the induced membrane potential for neurites are various locations and with various orientations (this generates a similar figure to Fig. 6 in the above paper).
+2. Navigate to folder containing repository, and open `Code` folder.
+3. Type `AnyElecConfig_RotatedNeurite` to run a simulation using 4 electrodes which displays the induced membrane potential for neurites at various locations and with various orientations (this generates a similar figure to Fig. 6 in the above paper).
 
 ## Code files
 
@@ -39,7 +40,8 @@ The extracellular potential for the NFL is calculated using a modified version o
 
 This script was used to conduct the analysis presented in:
 
-* \<Enter correct reference here\>
+*  Minimizing activation of overlying axons with epiretinal stimulation: The role of fiber orientation and electrode configuration 
+Esler TB, Kerr RR, Tahayori B, Grayden DB, Meffin H, et al. (2018) Minimizing activation of overlying axons with epiretinal stimulation: The role of fiber orientation and electrode configuration. PLOS ONE 13(3): e0193598. https://doi.org/10.1371/journal.pone.0193598
 
 #### Inputs
 
@@ -111,7 +113,8 @@ The extracellular potential for the NFL is calculated using a modified version o
 
 This script was used to conduct the analysis presented in:
 
-* \<Enter correct reference here\>
+*  Minimizing activation of overlying axons with epiretinal stimulation: The role of fiber orientation and electrode configuration 
+Esler TB, Kerr RR, Tahayori B, Grayden DB, Meffin H, et al. (2018) Minimizing activation of overlying axons with epiretinal stimulation: The role of fiber orientation and electrode configuration. PLOS ONE 13(3): e0193598. https://doi.org/10.1371/journal.pone.0193598
 
 #### Inputs
 
@@ -185,4 +188,5 @@ number of different simulations, and is called by *AnyElecConfig_RotatedNeurite*
 
 This script was used to conduct the analysis presented in:
 
-* \<Enter correct reference here\>
+*  Minimizing activation of overlying axons with epiretinal stimulation: The role of fiber orientation and electrode configuration 
+Esler TB, Kerr RR, Tahayori B, Grayden DB, Meffin H, et al. (2018) Minimizing activation of overlying axons with epiretinal stimulation: The role of fiber orientation and electrode configuration. PLOS ONE 13(3): e0193598. https://doi.org/10.1371/journal.pone.0193598
